@@ -1,0 +1,30 @@
+<div>
+  <div>
+    <div>
+      <form [formGroup]="jobForm" (ngSubmit)="submit(jobForm.value)">
+        <div>
+          <label for="example">Designation</label>
+          <input type="text" id="example" formControlName="designation">
+        </div>
+        <div>
+          <label for="example">Company Name</label>
+          <input type="text" id="example" formControlName="companyname">
+        </div>
+        <div>
+          <label for="example">Upload Resume</label>
+          <div>
+            <input type="file" (change)="chooseFile($event)" accept="application/msword,application/pdf"
+              formControlName="jd" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              <button type="submit">Post Job!</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
