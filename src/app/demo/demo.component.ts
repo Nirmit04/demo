@@ -6,8 +6,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ['./demo.component.css']
 })
 export class DemoComponent implements OnInit {
-  selectedFile: FileList;
-
+  selectedFile: File;
+  formdata = new FormData();;
   jobForm = new FormGroup({
     companyname: new FormControl('', Validators.required),
     designation: new FormControl('', Validators.required),
@@ -22,11 +22,14 @@ export class DemoComponent implements OnInit {
   }
 
   chooseFile(event) {
-    this.selectedFile = event.target.files;
+    this.selectedFile = event.target.files.item(0);
   }
 
   submit(form) {
-    console.log(form);
+    this.formdata.append('name', form.companyname);
+    this.formdata.append('desig', form.designation);
+    this.formdata.append('Image',this.selectedFile);
+    console.log(this.formdata);
   }
 
 }
